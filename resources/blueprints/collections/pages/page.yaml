@@ -1,0 +1,198 @@
+title: Page
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          -
+            handle: author
+            field:
+              type: users
+              display: Author
+              default: current
+              localizable: true
+              max_items: 1
+          -
+            handle: hero
+            field:
+              type: group
+              display: Hero
+              localizable: true
+              fields:
+                -
+                  handle: header
+                  field:
+                    type: text
+                    display: Header
+                -
+                  handle: copy
+                  field:
+                    type: textarea
+                    display: Copy
+                -
+                  handle: button
+                  field:
+                    type: group
+                    display: Button
+                    fields:
+                      -
+                        import: button
+                -
+                  handle: logo_tagline
+                  field:
+                    type: text
+                    display: Logo Tagline
+                -
+                  handle: logos
+                  field:
+                    type: assets
+                    display: Logos
+                    container: assets
+                    mode: grid
+                    restrict: true
+                    validate:
+                      - 'mimes:jpg,jpeg,png,webp,gif,svg,avif'
+          -
+            handle: how_it_works
+            field:
+              type: group
+              display: How It Works
+              localizable: true
+              fields:
+                -
+                  handle: header
+                  field:
+                    type: text
+                    display: Header
+                -
+                  handle: steps
+                  field:
+                    type: grid
+                    display: Steps
+                    mode: stacked
+                    add_row: Add Step
+                    fields:
+                      -
+                        handle: header
+                        field:
+                          type: text
+                          display: Header
+                          instructions: The accordion label. Step numbers are added automatically.
+                          validate:
+                            - required
+                      -
+                        handle: copy
+                        field:
+                          type: bard
+                          display: Copy
+                          buttons:
+                            - bold
+                            - italic
+                            - unorderedlist
+                            - orderedlist
+                            - anchor
+                            - removeformat
+                          remove_empty_nodes: false
+                          sets:
+                            main:
+                              display: Main
+                              sets:
+                                callout:
+                                  display: Callout
+                                  fields:
+                                    -
+                                      handle: copy
+                                      field:
+                                        type: bard
+                                        display: Copy
+                                        buttons:
+                                          - bold
+                                          - italic
+                                          - unorderedlist
+                                          - orderedlist
+                                          - anchor
+                                        remove_empty_nodes: false
+          -
+            handle: about
+            field:
+              type: group
+              display: About
+              localizable: true
+              fields:
+                -
+                  handle: header
+                  field:
+                    type: text
+                    display: Header
+                -
+                  handle: copy
+                  field:
+                    type: bard
+                    display: Copy
+                    buttons:
+                      - bold
+                      - italic
+                      - unorderedlist
+                      - orderedlist
+                      - anchor
+                      - removeformat
+                    remove_empty_nodes: false
+          -
+            handle: faqs
+            field:
+              type: group
+              display: Frequently Asked Questions
+              localizable: true
+              fields:
+                -
+                  handle: header
+                  field:
+                    type: text
+                    display: Header
+                -
+                  handle: questions
+                  field:
+                    type: grid
+                    display: Questions
+                    mode: stacked
+                    add_row: Add Question
+                    fields:
+                      -
+                        handle: header
+                        field:
+                          type: text
+                          display: Question
+                          validate:
+                            - required
+                      -
+                        handle: copy
+                        field:
+                          type: bard
+                          display: Copy
+                          buttons:
+                            - bold
+                            - italic
+                            - unorderedlist
+                            - orderedlist
+                            - anchor
+                            - removeformat
+                          remove_empty_nodes: false
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'

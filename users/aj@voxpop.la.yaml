@@ -2,3 +2,7 @@ name: AJ
 super: true
 id: 3bc33094-733f-4e0e-9e66-64f177d537f5
 password_hash: $2y$12$0/tHVmJ8CJFXxU5BJ5yCk.V9bOvzYzpjfDJC28dOw3HsAovF3qeo.
+preferences:
+  collections:
+    pages:
+      view: tree

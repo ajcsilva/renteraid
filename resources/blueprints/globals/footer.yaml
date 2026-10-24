@@ -1,0 +1,19 @@
+title: Footer
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: copy
+            field:
+              type: bard
+              display: Copy
+              localizable: true
+              buttons:
+                - bold
+                - italic
+                - anchor
+                - removeformat
+              remove_empty_nodes: false

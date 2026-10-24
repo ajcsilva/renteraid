@@ -1,0 +1,7 @@
+copy:
+  -
+    type: paragraph
+    content:
+      -
+        type: text
+        text: FOOTER CONTENT
