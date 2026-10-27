@@ -33,6 +33,27 @@ Run `php artisan config:clear` after changing these settings (or `php artisan co
 
 See the [Laravel Postmark documentation](https://laravel.com/docs/13.x/mail#postmark-driver).
 
+## Git automation
+
+Git automation is disabled locally and in `.env.example`. The existing `config/statamic/git.php` supports automatic commits and pushes through environment variables. To enable these in production, set:
+
+```dotenv
+STATAMIC_PRO_ENABLED=true
+STATAMIC_GIT_ENABLED=true
+STATAMIC_GIT_AUTOMATIC=true
+STATAMIC_GIT_PUSH=true
+```
+
+After setting these variables in production, run `php artisan config:clear` (or rebuild the deployment's configuration cache). Git automation requires Statamic Pro and an appropriate license in production.
+
+The server's PHP user needs Git, write access to the checkout, and SSH credentials with push access to `git@github.com:ajcsilva/renteraid.git`. The deployed branch must track its remote branch; for `main`, run `git branch --set-upstream-to=origin/main main` after fetching the remote. Deploy an attached branch rather than a detached HEAD.
+
+Commits use the authenticated editor's identity when available. Set `STATAMIC_GIT_USER_NAME` and `STATAMIC_GIT_USER_EMAIL` to customize the fallback identity. Only the paths listed in `config/statamic/git.php` are staged automatically.
+
+With the existing `QUEUE_CONNECTION=sync`, commits and pushes run during the save request. If you configure a background queue, set `STATAMIC_GIT_QUEUE_CONNECTION` to that connection and run its queue worker. Set `STATAMIC_GIT_PUSH=false` in environments where automatic pushes are unwanted.
+
+See [Statamic's Git automation documentation](https://statamic.dev/control-panel/git-automation).
+
 ## Learning Statamic
 
 Statamic has extensive [documentation][docs]. We dedicate a significant amount of time and energy every day to improving them, so if something is unclear, feel free to open issues for anything you find confusing or incomplete. We are happy to consider anything you feel will make the docs and CMS better.
