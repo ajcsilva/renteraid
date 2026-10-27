@@ -15,6 +15,24 @@ Statamic is the flat-first, Laravel + Git powered CMS designed for building beau
 > The code for the Statamic Composer package itself can be found at the [Statamic core package repository][cms-repo].
 
 
+## Sending email with Postmark
+
+The Postmark API transport is installed. Configure these values in your deployment environment or local `.env`:
+
+```dotenv
+MAIL_MAILER=postmark
+POSTMARK_API_KEY=your-postmark-server-api-token
+POSTMARK_MESSAGE_STREAM_ID=outbound
+MAIL_FROM_ADDRESS=hello@your-domain.com
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
+Use a Postmark **Server API token** and a sender address or domain verified in Postmark. `outbound` is the default transactional message stream; change it if you use a different stream. Keep the token out of version control.
+
+Run `php artisan config:clear` after changing these settings (or `php artisan config:cache` when deploying with cached configuration). Restart any long-running queue workers with `php artisan queue:restart` so they pick up the changes. SMTP credentials are not needed for this transport. Local development uses `MAIL_MAILER=log` until you enable Postmark.
+
+See the [Laravel Postmark documentation](https://laravel.com/docs/13.x/mail#postmark-driver).
+
 ## Learning Statamic
 
 Statamic has extensive [documentation][docs]. We dedicate a significant amount of time and energy every day to improving them, so if something is unclear, feel free to open issues for anything you find confusing or incomplete. We are happy to consider anything you feel will make the docs and CMS better.
