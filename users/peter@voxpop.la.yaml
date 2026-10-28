@@ -2,3 +2,7 @@ name: Peter
 super: true
 id: 4ed2d460-6c66-4b53-ae04-9f15e240cbcc
 password_hash: $2y$12$qFj9XQyTrrG..K6CdjWa0.4vLIlDXBkXF7i2QjZoe3eMvsy7ifs/i
+preferences:
+  collections:
+    pages:
+      view: tree
